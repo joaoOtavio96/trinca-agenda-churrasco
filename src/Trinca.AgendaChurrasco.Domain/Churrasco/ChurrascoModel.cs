@@ -1,8 +1,11 @@
-namespace Trinca.AgendaChurrasco.Domain.Entities;
+using Trinca.AgendaChurrasco.Domain.Participante;
+using Trinca.AgendaChurrasco.Domain.Shared.Entities;
 
-public class Churrasco : Entity
+namespace Trinca.AgendaChurrasco.Domain.Churrasco;
+
+public class ChurrascoModel : Entity
 {
-    public Churrasco(
+    public ChurrascoModel(
         string titulo, 
         string descricao, 
         string observacao, 
@@ -24,14 +27,14 @@ public class Churrasco : Entity
     public decimal ValorSugeridoSemBebida { get; private set; }
     public decimal ValorSugeridoComBebida { get; private set; }
     
-    public virtual ICollection<Participante> Participantes { get; set; }
+    public virtual ICollection<ParticipanteModel> Participantes { get; set; }
 
-    public void Atualizar(Churrasco churrasco)
+    public void Atualizar(ChurrascoModel churrascoModel)
     {
-        Titulo = churrasco.Titulo;
-        Descricao = churrasco.Descricao;
-        Observacao = churrasco.Observacao;
-        Data = churrasco.Data;
+        Titulo = churrascoModel.Titulo;
+        Descricao = churrascoModel.Descricao;
+        Observacao = churrascoModel.Observacao;
+        Data = churrascoModel.Data;
     }
 
     public decimal CalcularValorTotal()

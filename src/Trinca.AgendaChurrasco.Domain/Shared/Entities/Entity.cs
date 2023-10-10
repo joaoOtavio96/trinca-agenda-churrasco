@@ -1,4 +1,4 @@
-namespace Trinca.AgendaChurrasco.Domain.Entities;
+namespace Trinca.AgendaChurrasco.Domain.Shared.Entities;
 
 public abstract class Entity
 {

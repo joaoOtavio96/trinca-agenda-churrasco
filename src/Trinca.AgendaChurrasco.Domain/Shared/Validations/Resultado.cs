@@ -1,4 +1,4 @@
-namespace Trinca.AgendaChurrasco.Domain.Validations;
+namespace Trinca.AgendaChurrasco.Domain.Shared.Validations;
 
 public class Resultado
 {

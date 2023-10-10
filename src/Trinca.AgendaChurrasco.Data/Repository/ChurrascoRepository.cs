@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Trinca.AgendaChurrasco.Domain.Entities;
-using Trinca.AgendaChurrasco.Domain.Repositories;
+using Trinca.AgendaChurrasco.Domain.Churrasco;
 
 namespace Trinca.AgendaChurrasco.Data.Repository;
 
@@ -13,32 +12,32 @@ public class ChurrascoRepository : IChurrascoRepository
         _context = context;
     }
 
-    public async Task Adicionar(Churrasco churrasco)
+    public async Task Adicionar(ChurrascoModel churrascoModel)
     {
-        await _context.AddAsync(churrasco);
+        await _context.AddAsync(churrascoModel);
         await _context.SaveChangesAsync();
     }
 
-    public async Task Atualizar(Churrasco churrasco)
+    public async Task Atualizar(ChurrascoModel churrascoModel)
     {
-        _context.Update(churrasco);
+        _context.Update(churrascoModel);
         await _context.SaveChangesAsync();
     }
 
-    public async Task Deletar(Churrasco churrasco)
+    public async Task Deletar(ChurrascoModel churrascoModel)
     {
-        _context.Remove(churrasco);
+        _context.Remove(churrascoModel);
         await _context.SaveChangesAsync();
     }
 
-    public async Task<Churrasco?> BuscarPorId(Guid id)
+    public async Task<ChurrascoModel?> BuscarPorId(Guid id)
     {
         return await _context.Churrascos
             .Include(x => x.Participantes)
             .FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public async Task<IList<Churrasco>> Listar()
+    public async Task<IList<ChurrascoModel>> Listar()
     {
         return await _context.Churrascos
             .Include(x => x.Participantes)

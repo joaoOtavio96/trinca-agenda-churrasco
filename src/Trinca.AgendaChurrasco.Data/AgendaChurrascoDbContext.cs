@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Trinca.AgendaChurrasco.Data.EntityConfiguration;
-using Trinca.AgendaChurrasco.Domain.Entities;
+using Trinca.AgendaChurrasco.Domain.Churrasco;
+using Trinca.AgendaChurrasco.Domain.Participante;
 
 namespace Trinca.AgendaChurrasco.Data;
 
@@ -8,8 +9,8 @@ public class AgendaChurrascoDbContext : DbContext
 {
     public AgendaChurrascoDbContext(DbContextOptions<AgendaChurrascoDbContext> options) : base(options) { }
     
-    public DbSet<Churrasco> Churrascos { get; set; }
-    public DbSet<Participante> Participantes { get; set; }
+    public DbSet<ChurrascoModel> Churrascos { get; set; }
+    public DbSet<ParticipanteModel> Participantes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

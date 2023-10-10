@@ -1,6 +1,6 @@
-namespace Trinca.AgendaChurrasco.Api.Models;
+namespace Trinca.AgendaChurrasco.Api.Churrasco;
 
-public class ChurrascoDetalheResponseModel
+public class ChurrascoRequestModel
 {
     public string Titulo { get; set; }
     public string Descricao { get; set; }
@@ -8,8 +8,4 @@ public class ChurrascoDetalheResponseModel
     public DateTime Data { get; set; }
     public decimal ValorSugeridoSemBebida { get; set; }
     public decimal ValorSugeridoComBebida { get; set; }
-    public decimal ValorTotal { get; set; }
-    public int ParticipantesTotal { get; set; }
-    
-    public IList<ParticipanteResponseModel> Participantes { get; set; }
 }

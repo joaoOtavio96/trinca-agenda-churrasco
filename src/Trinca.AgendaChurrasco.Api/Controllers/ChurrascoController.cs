@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Trinca.AgendaChurrasco.Api.Models;
-using Trinca.AgendaChurrasco.Domain.Entities;
-using Trinca.AgendaChurrasco.Domain.Services;
+using Trinca.AgendaChurrasco.Api.Churrasco;
+using Trinca.AgendaChurrasco.Api.Participante;
+using Trinca.AgendaChurrasco.Domain.Churrasco;
 
 namespace Trinca.AgendaChurrasco.Api.Controllers;
 
@@ -88,7 +88,7 @@ public class ChurrascoController : ControllerBase
     {
         try
         {
-            var churrasco = new Churrasco(
+            var churrasco = new ChurrascoModel(
                 churrascoModel.Titulo,
                 churrascoModel.Descricao,
                 churrascoModel.Observacao,
@@ -115,7 +115,7 @@ public class ChurrascoController : ControllerBase
     {
         try
         {
-            var churrasco = new Churrasco(
+            var churrasco = new ChurrascoModel(
                 churrascoModel.Titulo,
                 churrascoModel.Descricao,
                 churrascoModel.Observacao,

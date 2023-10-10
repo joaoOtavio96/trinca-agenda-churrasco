@@ -1,4 +1,4 @@
-namespace Trinca.AgendaChurrasco.Api.Models;
+namespace Trinca.AgendaChurrasco.Api.Participante;
 
 public class ParticipanteRequestModel
 {

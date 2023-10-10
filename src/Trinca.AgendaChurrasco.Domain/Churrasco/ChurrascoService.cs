@@ -1,8 +1,6 @@
-using Trinca.AgendaChurrasco.Domain.Entities;
-using Trinca.AgendaChurrasco.Domain.Repositories;
-using Trinca.AgendaChurrasco.Domain.Validations;
+using Trinca.AgendaChurrasco.Domain.Shared.Validations;
 
-namespace Trinca.AgendaChurrasco.Domain.Services;
+namespace Trinca.AgendaChurrasco.Domain.Churrasco;
 
 public class ChurrascoService : IChurrascoService
 {
@@ -13,33 +11,33 @@ public class ChurrascoService : IChurrascoService
         _repository = repository;
     }
 
-    public async Task<Resultado> Adicionar(Churrasco churrasco)
+    public async Task<Resultado> Adicionar(ChurrascoModel churrascoModel)
     {
         var validator = new ChurrascoValidator();
-        var validationResult = validator.Validate(churrasco);
+        var validationResult = validator.Validate(churrascoModel);
 
         if (!validationResult.IsValid)
             return new Resultado(validationResult.Errors.Select(x => x.ErrorMessage));
 
-        await _repository.Adicionar(churrasco);
+        await _repository.Adicionar(churrascoModel);
 
         return new Resultado();
     }
 
-    public async Task<Resultado> Atualizar(Churrasco churrasco)
+    public async Task<Resultado> Atualizar(ChurrascoModel churrascoModel)
     {
         var validator = new ChurrascoValidator();
-        var validationResult = await validator.ValidateAsync(churrasco);
+        var validationResult = await validator.ValidateAsync(churrascoModel);
 
         if (!validationResult.IsValid)
             return new Resultado(validationResult.Errors.Select(x => x.ErrorMessage));
 
-        var churrascoAtualizar = await _repository.BuscarPorId(churrasco.Id);
+        var churrascoAtualizar = await _repository.BuscarPorId(churrascoModel.Id);
 
         if(churrascoAtualizar is null)
             return new Resultado("Churrasco não encontrado");
         
-        churrascoAtualizar.Atualizar(churrasco);
+        churrascoAtualizar.Atualizar(churrascoModel);
         
         await _repository.Atualizar(churrascoAtualizar);
         
@@ -58,12 +56,12 @@ public class ChurrascoService : IChurrascoService
         return new Resultado();
     }
 
-    public async Task<Churrasco?> BuscarPorId(Guid id)
+    public async Task<ChurrascoModel?> BuscarPorId(Guid id)
     {
         return await _repository.BuscarPorId(id);
     }
 
-    public async Task<IList<Churrasco>> Listar()
+    public async Task<IList<ChurrascoModel>> Listar()
     {
         return await _repository.Listar();
     }

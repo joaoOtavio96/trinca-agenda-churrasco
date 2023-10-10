@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Trinca.AgendaChurrasco.Domain.Entities;
-using Trinca.AgendaChurrasco.Domain.Repositories;
+using Trinca.AgendaChurrasco.Domain.Participante;
 
 namespace Trinca.AgendaChurrasco.Data.Repository;
 
@@ -13,25 +12,25 @@ public class ParticipanteRepository : IParticipanteRepository
         _context = context;
     }
     
-    public async Task Adicionar(Participante participante)
+    public async Task Adicionar(ParticipanteModel participanteModel)
     {
-        await _context.AddAsync(participante);
+        await _context.AddAsync(participanteModel);
         await _context.SaveChangesAsync();
     }
 
-    public async Task Atualizar(Participante participante)
+    public async Task Atualizar(ParticipanteModel participanteModel)
     {
-        _context.Update(participante);
+        _context.Update(participanteModel);
         await _context.SaveChangesAsync();
     }
 
-    public async Task Deletar(Participante participante)
+    public async Task Deletar(ParticipanteModel participanteModel)
     {
-        _context.Participantes.Remove(participante);
+        _context.Participantes.Remove(participanteModel);
         await _context.SaveChangesAsync();
     }
 
-    public async Task<Participante?> BuscarPorId(Guid id)
+    public async Task<ParticipanteModel?> BuscarPorId(Guid id)
     {
         return await _context.Participantes.FirstOrDefaultAsync(x => x.Id == id);
     }

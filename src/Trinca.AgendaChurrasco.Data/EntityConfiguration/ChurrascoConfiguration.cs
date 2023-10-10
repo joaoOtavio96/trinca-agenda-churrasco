@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Trinca.AgendaChurrasco.Domain.Entities;
+using Trinca.AgendaChurrasco.Domain.Churrasco;
 
 namespace Trinca.AgendaChurrasco.Data.EntityConfiguration;
 
-public class ChurrascoConfiguration : IEntityTypeConfiguration<Churrasco>
+public class ChurrascoConfiguration : IEntityTypeConfiguration<ChurrascoModel>
 {
-    public void Configure(EntityTypeBuilder<Churrasco> builder)
+    public void Configure(EntityTypeBuilder<ChurrascoModel> builder)
     {
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Titulo)

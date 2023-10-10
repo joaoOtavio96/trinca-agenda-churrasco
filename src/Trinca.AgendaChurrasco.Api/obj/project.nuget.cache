@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "lWjcwDb2Y9tHCdDNXBHocDd5dRE+Pd3TuNCLYAcOLEjaPAOC8u/dz6RB4W9FZ0KE5SB9Yfqf3J/wzQvaOs4duQ==",
+  "dgSpecHash": "KiiRiH7jovMTiKJlgGTymH2UmjRJvSLTTQ9+8GeplbfyuO2vShRgtkkm0lgnWjzhTvAUeRQTJUv4BXodjIU2yw==",
   "success": true,
   "projectFilePath": "/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Api/Trinca.AgendaChurrasco.Api.csproj",
   "expectedPackageFiles": [
+    "/Users/joaootaviodefariasdeoliveira/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/joaootaviodefariasdeoliveira/.nuget/packages/fluentvalidation/11.7.1/fluentvalidation.11.7.1.nupkg.sha512",
     "/Users/joaootaviodefariasdeoliveira/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
-    "/Users/joaootaviodefariasdeoliveira/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
+    "/Users/joaootaviodefariasdeoliveira/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/joaootaviodefariasdeoliveira/.nuget/packages/microsoft.data.sqlclient/2.1.4/microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "/Users/joaootaviodefariasdeoliveira/.nuget/packages/microsoft.data.sqlclient.sni.runtime/2.1.1/microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "/Users/joaootaviodefariasdeoliveira/.nuget/packages/microsoft.entityframeworkcore/6.0.22/microsoft.entityframeworkcore.6.0.22.nupkg.sha512",

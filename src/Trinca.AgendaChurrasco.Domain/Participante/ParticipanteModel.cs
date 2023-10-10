@@ -1,8 +1,10 @@
-namespace Trinca.AgendaChurrasco.Domain.Entities;
+using Trinca.AgendaChurrasco.Domain.Shared.Entities;
 
-public class Participante : Entity
+namespace Trinca.AgendaChurrasco.Domain.Participante;
+
+public class ParticipanteModel : Entity
 {
-    public Participante(string nome, decimal valor, bool pago, Guid churrascoId)
+    public ParticipanteModel(string nome, decimal valor, bool pago, Guid churrascoId)
     {
         Nome = nome;
         Valor = valor;
@@ -14,7 +16,7 @@ public class Participante : Entity
     public bool Pago { get; private set; }
 
     public Guid ChurrascoId { get; private set; }
-    public virtual Churrasco Churrasco { get; set; }
+    public virtual Churrasco.ChurrascoModel ChurrascoModel { get; set; }
 
     public void AtualizarPago() => Pago = true;
     public void AtualizarNaoPago() => Pago = false;

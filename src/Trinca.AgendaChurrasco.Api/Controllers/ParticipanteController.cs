@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Trinca.AgendaChurrasco.Api.Models;
-using Trinca.AgendaChurrasco.Domain.Entities;
-using Trinca.AgendaChurrasco.Domain.Services;
+using Trinca.AgendaChurrasco.Api.Participante;
+using Trinca.AgendaChurrasco.Domain.Participante;
 
 namespace Trinca.AgendaChurrasco.Api.Controllers;
 
@@ -21,7 +20,7 @@ public class ParticipanteController : ControllerBase
     {
         try
         {
-            var participante = new Participante(
+            var participante = new ParticipanteModel(
                 participanteModel.Nome, 
                 participanteModel.Valor, 
                 participanteModel.Pago,
