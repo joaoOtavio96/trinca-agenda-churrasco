@@ -1,0 +1,16 @@
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/bin/Debug/net6.0/Trinca.AgendaChurrasco.Data.deps.json
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/bin/Debug/net6.0/Trinca.AgendaChurrasco.Data.dll
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/bin/Debug/net6.0/Trinca.AgendaChurrasco.Data.pdb
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/bin/Debug/net6.0/Trinca.AgendaChurrasco.Domain.dll
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/bin/Debug/net6.0/Trinca.AgendaChurrasco.Domain.pdb
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/obj/Debug/net6.0/Trinca.AgendaChurrasco.Data.csproj.AssemblyReference.cache
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/obj/Debug/net6.0/Trinca.AgendaChurrasco.Data.GeneratedMSBuildEditorConfig.editorconfig
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/obj/Debug/net6.0/Trinca.AgendaChurrasco.Data.AssemblyInfoInputs.cache
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/obj/Debug/net6.0/Trinca.AgendaChurrasco.Data.AssemblyInfo.cs
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/obj/Debug/net6.0/Trinca.AgendaChurrasco.Data.csproj.CoreCompileInputs.cache
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/obj/Debug/net6.0/Trinca.AgendaChurrasco.Data.sourcelink.json
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/obj/Debug/net6.0/Trinca.AgendaChurrasco.Data.csproj.CopyComplete
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/obj/Debug/net6.0/Trinca.AgendaChurrasco.Data.dll
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/obj/Debug/net6.0/refint/Trinca.AgendaChurrasco.Data.dll
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/obj/Debug/net6.0/Trinca.AgendaChurrasco.Data.pdb
+/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Data/obj/Debug/net6.0/ref/Trinca.AgendaChurrasco.Data.dll

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "nyzZm/5osCJnPzMAYdZSGZtWOlx2kAXGaDswv/q9n2WRwdl4lnkynKOWptGpkLkzV90vEL94cEIizHmJNzGOnQ==",
+  "success": true,
+  "projectFilePath": "/Users/joaootaviodefariasdeoliveira/Dev/Trinca.AgendaChurrasco/src/Trinca.AgendaChurrasco.Domain/Trinca.AgendaChurrasco.Domain.csproj",
+  "expectedPackageFiles": [
+    "/Users/joaootaviodefariasdeoliveira/.nuget/packages/fluentvalidation/11.7.1/fluentvalidation.11.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}
