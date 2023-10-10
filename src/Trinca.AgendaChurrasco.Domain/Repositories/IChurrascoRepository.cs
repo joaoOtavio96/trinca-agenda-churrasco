@@ -8,4 +8,5 @@ public interface IChurrascoRepository
     Task Atualizar(Churrasco churrasco);
     Task Deletar(Churrasco churrasco);
     Task<Churrasco?> BuscarPorId(Guid id);
+    Task<IList<Churrasco>> Listar();
 }

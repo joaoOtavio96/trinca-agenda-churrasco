@@ -44,10 +44,7 @@ public class ChurrascoService : IChurrascoService
 
         var churrascoAtualizar = await _repository.BuscarPorId(churrasco.Id);
 
-        churrascoAtualizar.Titulo = churrasco.Titulo;
-        churrascoAtualizar.Descricao = churrasco.Descricao;
-        churrascoAtualizar.Observacao = churrasco.Observacao;
-        churrascoAtualizar.Data = churrasco.Data;
+        churrascoAtualizar.Atualizar(churrasco);
         
         await _repository.Atualizar(churrascoAtualizar);
         
@@ -62,5 +59,15 @@ public class ChurrascoService : IChurrascoService
             return;
         
         await _repository.Deletar(churrascoDeletar);
+    }
+
+    public async Task<Churrasco?> BuscarPorId(Guid id)
+    {
+        return await _repository.BuscarPorId(id);
+    }
+
+    public async Task<IList<Churrasco>> Listar()
+    {
+        return await _repository.Listar();
     }
 }

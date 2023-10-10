@@ -33,6 +33,15 @@ public class ChurrascoRepository : IChurrascoRepository
 
     public async Task<Churrasco?> BuscarPorId(Guid id)
     {
-        return await _context.Churrascos.FirstOrDefaultAsync(x => x.Id == id);
+        return await _context.Churrascos
+            .Include(x => x.Participantes)
+            .FirstOrDefaultAsync(x => x.Id == id);
+    }
+
+    public async Task<IList<Churrasco>> Listar()
+    {
+        return await _context.Churrascos
+            .Include(x => x.Participantes)
+            .ToListAsync();
     }
 }
