@@ -99,9 +99,7 @@ public class ChurrascoController : ControllerBase
             var resultado = await _service.Adicionar(churrasco);
 
             if (resultado.PossuiErros)
-            {
                 return BadRequest(resultado);
-            }
 
             return Ok();
         }
@@ -128,9 +126,7 @@ public class ChurrascoController : ControllerBase
             var resultado = await _service.Atualizar(churrasco);
 
             if (resultado.PossuiErros)
-            {
                 return BadRequest(resultado);
-            }
 
             return Ok();
         }
@@ -146,7 +142,10 @@ public class ChurrascoController : ControllerBase
     {
         try
         {
-            await _service.Deletar(id);
+            var resultado = await _service.Deletar(id);
+
+            if (resultado.PossuiErros)
+                return BadRequest(resultado);
 
             return Ok();
         }

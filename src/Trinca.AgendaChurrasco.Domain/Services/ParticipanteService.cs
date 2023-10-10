@@ -19,42 +19,48 @@ public class ParticipanteService : IParticipanteService
         var validationResult = validator.Validate(participante);
 
         if (!validationResult.IsValid)
-        {
-            var erros = validationResult.Errors.Select(x => new Erro { Mensagem = x.ErrorMessage });
-            
-            return new Resultado { Erros = erros.ToList() };
-        }
+            return new Resultado(validationResult.Errors.Select(x => x.ErrorMessage));
 
         await _repository.Adicionar(participante);
 
         return new Resultado();
     }
 
-    public async Task Deletar(Guid id)
+    public async Task<Resultado> Deletar(Guid id)
     {
         var participanteDeletar = await _repository.BuscarPorId(id);
 
         if (participanteDeletar is null)
-            return;
+            return new Resultado("Participante não encontrado");
         
         await _repository.Deletar(participanteDeletar);
+
+        return new Resultado();
     }
 
-    public async Task AtualizarPago(Guid id)
+    public async Task<Resultado> AtualizarPago(Guid id)
     {
         var participante = await _repository.BuscarPorId(id);
+        
+        if(participante is null)
+            return new Resultado("Participante não encontrado");
         
         participante.AtualizarPago();
-
         await _repository.Atualizar(participante);
+
+        return new Resultado();
     }
 
-    public async Task AtualizarNaoPago(Guid id)
+    public async Task<Resultado> AtualizarNaoPago(Guid id)
     {
         var participante = await _repository.BuscarPorId(id);
         
+        if(participante is null)
+            return new Resultado("Participante não encontrado");
+        
         participante.AtualizarNaoPago();
-
         await _repository.Atualizar(participante);
+
+        return new Resultado();
     }
 }

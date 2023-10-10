@@ -30,9 +30,7 @@ public class ParticipanteController : ControllerBase
             var resultado = await _service.Adicionar(participante);
 
             if (resultado.PossuiErros)
-            {
                 return BadRequest(resultado);
-            }
 
             return Ok();
 

@@ -19,11 +19,7 @@ public class ChurrascoService : IChurrascoService
         var validationResult = validator.Validate(churrasco);
 
         if (!validationResult.IsValid)
-        {
-            var erros = validationResult.Errors.Select(x => new Erro { Mensagem = x.ErrorMessage });
-            
-            return new Resultado { Erros = erros.ToList() };
-        }
+            return new Resultado(validationResult.Errors.Select(x => x.ErrorMessage));
 
         await _repository.Adicionar(churrasco);
 
@@ -36,14 +32,13 @@ public class ChurrascoService : IChurrascoService
         var validationResult = await validator.ValidateAsync(churrasco);
 
         if (!validationResult.IsValid)
-        {
-            var erros = validationResult.Errors.Select(x => new Erro { Mensagem = x.ErrorMessage });
-            
-            return new Resultado { Erros = erros.ToList() };
-        }
+            return new Resultado(validationResult.Errors.Select(x => x.ErrorMessage));
 
         var churrascoAtualizar = await _repository.BuscarPorId(churrasco.Id);
 
+        if(churrascoAtualizar is null)
+            return new Resultado("Churrasco não encontrado");
+        
         churrascoAtualizar.Atualizar(churrasco);
         
         await _repository.Atualizar(churrascoAtualizar);
@@ -51,14 +46,16 @@ public class ChurrascoService : IChurrascoService
         return new Resultado();
     }
 
-    public async Task Deletar(Guid id)
+    public async Task<Resultado> Deletar(Guid id)
     {
         var churrascoDeletar = await _repository.BuscarPorId(id);
 
         if (churrascoDeletar is null)
-            return;
+            return new Resultado("Churrasco não encontrado");
         
         await _repository.Deletar(churrascoDeletar);
+
+        return new Resultado();
     }
 
     public async Task<Churrasco?> BuscarPorId(Guid id)

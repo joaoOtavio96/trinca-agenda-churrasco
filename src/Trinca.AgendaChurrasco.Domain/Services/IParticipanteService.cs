@@ -6,7 +6,7 @@ namespace Trinca.AgendaChurrasco.Domain.Services;
 public interface IParticipanteService
 {
     Task<Resultado> Adicionar(Participante participante);
-    Task Deletar(Guid id);
-    Task AtualizarPago(Guid id);
-    Task AtualizarNaoPago(Guid id);
+    Task<Resultado> Deletar(Guid id);
+    Task<Resultado> AtualizarPago(Guid id);
+    Task<Resultado> AtualizarNaoPago(Guid id);
 }
