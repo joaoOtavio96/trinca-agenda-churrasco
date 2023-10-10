@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Trinca.AgendaChurrasco.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+229ecb9dcdeda157ba268646bcd3e0984d0b292c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Trinca.AgendaChurrasco.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Trinca.AgendaChurrasco.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
