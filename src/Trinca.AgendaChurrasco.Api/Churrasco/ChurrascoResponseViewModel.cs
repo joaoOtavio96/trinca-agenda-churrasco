@@ -1,6 +1,6 @@
 namespace Trinca.AgendaChurrasco.Api.Churrasco;
 
-public class ChurrascoResponseModel
+public class ChurrascoResponseViewModel
 {
     public Guid Id { get; set; }
     public string Titulo { get; set; }

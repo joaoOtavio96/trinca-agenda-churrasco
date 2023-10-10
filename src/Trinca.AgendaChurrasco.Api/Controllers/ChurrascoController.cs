@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Trinca.AgendaChurrasco.Api.Churrasco;
 using Trinca.AgendaChurrasco.Api.Participante;
@@ -10,10 +11,12 @@ namespace Trinca.AgendaChurrasco.Api.Controllers;
 public class ChurrascoController : ControllerBase
 {
     private readonly IChurrascoService _service;
+    private readonly IMapper _mapper;
 
-    public ChurrascoController(IChurrascoService service)
+    public ChurrascoController(IChurrascoService service, IMapper mapper)
     {
         _service = service;
+        _mapper = mapper;
     }
 
     [HttpGet]
@@ -24,7 +27,7 @@ public class ChurrascoController : ControllerBase
             var churrascos = await _service.Listar();
 
             var churrascoListarResponse = churrascos
-                .Select(x => new ChurrascoResponseModel()
+                .Select(x => new ChurrascoResponseViewModel()
                 { 
                     Id = x.Id,
                     Titulo = x.Titulo,
@@ -53,7 +56,7 @@ public class ChurrascoController : ControllerBase
                 return NotFound();
 
             var participantes = churrasco.Participantes
-                .Select(x => new ParticipanteResponseModel()
+                .Select(x => new ParticipanteResponseViewModel()
                 {
                     Id = x.Id,
                     Nome = x.Nome,
@@ -61,7 +64,7 @@ public class ChurrascoController : ControllerBase
                     Pago = x.Pago
                 });
 
-            var churrascoDetalhe = new ChurrascoDetalheResponseModel
+            var churrascoDetalhe = new ChurrascoDetalheResponseViewModel
             {
                 Titulo = churrasco.Titulo,
                 Descricao = churrasco.Descricao,
@@ -84,18 +87,12 @@ public class ChurrascoController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(ChurrascoRequestModel churrascoModel)
+    public async Task<IActionResult> Post(ChurrascoRequestViewModel churrascoViewModel)
     {
         try
         {
-            var churrasco = new ChurrascoModel(
-                churrascoModel.Titulo,
-                churrascoModel.Descricao,
-                churrascoModel.Observacao,
-                churrascoModel.Data,
-                churrascoModel.ValorSugeridoSemBebida,
-                churrascoModel.ValorSugeridoComBebida);
-
+            var churrasco = _mapper.Map<ChurrascoRequestViewModel, ChurrascoModel>(churrascoViewModel);
+            
             var resultado = await _service.Adicionar(churrasco);
 
             if (resultado.PossuiErros)
@@ -111,17 +108,15 @@ public class ChurrascoController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Put(ChurrascoRequestModel churrascoModel, Guid id)
+    public async Task<IActionResult> Put(ChurrascoRequestViewModel churrascoViewModel, Guid id)
     {
         try
         {
-            var churrasco = new ChurrascoModel(
-                churrascoModel.Titulo,
-                churrascoModel.Descricao,
-                churrascoModel.Observacao,
-                churrascoModel.Data,
-                churrascoModel.ValorSugeridoSemBebida,
-                churrascoModel.ValorSugeridoComBebida);
+            var churrasco = _mapper
+                .Map<ChurrascoRequestViewModel, ChurrascoModel>(
+                    churrascoViewModel, 
+                    opts => opts.Items["Id"] = id
+                    );
 
             var resultado = await _service.Atualizar(churrasco);
 

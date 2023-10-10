@@ -1,6 +1,6 @@
 namespace Trinca.AgendaChurrasco.Api.Participante;
 
-public class ParticipanteRequestModel
+public class ParticipanteRequestViewModel
 {
     public Guid ChurrascoId { get; set; }
     public string Nome { get; set; }

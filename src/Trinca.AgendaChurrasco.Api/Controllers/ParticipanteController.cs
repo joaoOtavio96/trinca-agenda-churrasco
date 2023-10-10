@@ -16,15 +16,15 @@ public class ParticipanteController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(ParticipanteRequestModel participanteModel)
+    public async Task<IActionResult> Post(ParticipanteRequestViewModel participanteViewModel)
     {
         try
         {
             var participante = new ParticipanteModel(
-                participanteModel.Nome, 
-                participanteModel.Valor, 
-                participanteModel.Pago,
-                participanteModel.ChurrascoId);
+                participanteViewModel.Nome, 
+                participanteViewModel.Valor, 
+                participanteViewModel.Pago,
+                participanteViewModel.ChurrascoId);
 
             var resultado = await _service.Adicionar(participante);
 
