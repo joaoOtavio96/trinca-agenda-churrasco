@@ -1,3 +1,4 @@
+using Trinca.AgendaChurrasco.Domain.Churrascos;
 using Trinca.AgendaChurrasco.Domain.Shared.Validations;
 
 namespace Trinca.AgendaChurrasco.Domain.Participantes;
@@ -5,10 +6,12 @@ namespace Trinca.AgendaChurrasco.Domain.Participantes;
 public class ParticipanteService : IParticipanteService
 {
     private readonly IParticipanteRepository _repository;
+    private readonly IChurrascoService _churrascoService;
     
-    public ParticipanteService(IParticipanteRepository repository)
+    public ParticipanteService(IParticipanteRepository repository, IChurrascoService churrascoService)
     {
         _repository = repository;
+        _churrascoService = churrascoService;
     }
     
     public async Task<Resultado> Adicionar(Participante participante)
@@ -19,6 +22,11 @@ public class ParticipanteService : IParticipanteService
         if (!validationResult.IsValid)
             return new Resultado(validationResult.Errors.Select(x => x.ErrorMessage));
 
+        var churrasco = await _churrascoService.BuscarPorId(participante.ChurrascoId);
+        
+        if(churrasco is null)
+            return new Resultado("Churrasco não encontrado");
+        
         await _repository.Adicionar(participante);
 
         return new Resultado();

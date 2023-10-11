@@ -64,7 +64,10 @@ public class ParticipanteController : ControllerBase
     {
         try
         {
-            await _service.AtualizarPago(id);
+            var resultado = await _service.AtualizarPago(id);
+            
+            if (resultado.PossuiErros)
+                return BadRequest(resultado);
 
             return Ok();
         }
@@ -80,8 +83,11 @@ public class ParticipanteController : ControllerBase
     {
         try
         {
-            await _service.AtualizarNaoPago(id);
+            var resultado = await _service.AtualizarNaoPago(id);
 
+            if (resultado.PossuiErros)
+                return BadRequest(resultado);
+            
             return Ok();
         }
         catch (Exception e)
