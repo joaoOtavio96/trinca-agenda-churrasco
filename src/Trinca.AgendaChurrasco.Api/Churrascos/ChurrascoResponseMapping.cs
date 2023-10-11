@@ -1,17 +1,17 @@
 using AutoMapper;
-using Trinca.AgendaChurrasco.Domain.Churrasco;
+using Trinca.AgendaChurrasco.Domain.Churrascos;
 
-namespace Trinca.AgendaChurrasco.Api.Churrasco;
+namespace Trinca.AgendaChurrasco.Api.Churrascos;
 
-public class ModelToViewModelMapping : Profile
+public class ChurrascoResponseMapping : Profile
 {
-    public ModelToViewModelMapping()
+    public ChurrascoResponseMapping()
     {
-        CreateMap<ChurrascoModel, ChurrascoResponseViewModel>()
+        CreateMap<Churrasco, ChurrascoResponse>()
             .ForMember(x => x.ValorTotal, opt => opt.MapFrom(x => x.CalcularValorTotal()))
             .ForMember(x => x.ParticipantesTotal, opt => opt.MapFrom(x => x.ParticipantesTotal()));
         
-        CreateMap<ChurrascoModel, ChurrascoDetalheResponseViewModel>()
+        CreateMap<Churrasco, ChurrascoDetalheResponse>()
             .ForMember(x => x.ValorTotal, opt => opt.MapFrom(x => x.CalcularValorTotal()))
             .ForMember(x => x.ParticipantesTotal, opt => opt.MapFrom(x => x.ParticipantesTotal()));
 

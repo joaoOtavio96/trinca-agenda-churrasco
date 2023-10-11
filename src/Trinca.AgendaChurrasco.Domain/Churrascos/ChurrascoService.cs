@@ -1,6 +1,6 @@
 using Trinca.AgendaChurrasco.Domain.Shared.Validations;
 
-namespace Trinca.AgendaChurrasco.Domain.Churrasco;
+namespace Trinca.AgendaChurrasco.Domain.Churrascos;
 
 public class ChurrascoService : IChurrascoService
 {
@@ -11,33 +11,33 @@ public class ChurrascoService : IChurrascoService
         _repository = repository;
     }
 
-    public async Task<Resultado> Adicionar(ChurrascoModel churrascoModel)
+    public async Task<Resultado> Adicionar(Churrasco churrasco)
     {
         var validator = new ChurrascoValidator();
-        var validationResult = validator.Validate(churrascoModel);
+        var validationResult = validator.Validate(churrasco);
 
         if (!validationResult.IsValid)
             return new Resultado(validationResult.Errors.Select(x => x.ErrorMessage));
 
-        await _repository.Adicionar(churrascoModel);
+        await _repository.Adicionar(churrasco);
 
         return new Resultado();
     }
 
-    public async Task<Resultado> Atualizar(ChurrascoModel churrascoModel)
+    public async Task<Resultado> Atualizar(Churrasco churrasco)
     {
         var validator = new ChurrascoValidator();
-        var validationResult = await validator.ValidateAsync(churrascoModel);
+        var validationResult = await validator.ValidateAsync(churrasco);
 
         if (!validationResult.IsValid)
             return new Resultado(validationResult.Errors.Select(x => x.ErrorMessage));
 
-        var churrascoAtualizar = await _repository.BuscarPorId(churrascoModel.Id);
+        var churrascoAtualizar = await _repository.BuscarPorId(churrasco.Id);
 
         if(churrascoAtualizar is null)
             return new Resultado("Churrasco não encontrado");
         
-        churrascoAtualizar.Atualizar(churrascoModel);
+        churrascoAtualizar.Atualizar(churrasco);
         
         await _repository.Atualizar(churrascoAtualizar);
         
@@ -56,12 +56,12 @@ public class ChurrascoService : IChurrascoService
         return new Resultado();
     }
 
-    public async Task<ChurrascoModel?> BuscarPorId(Guid id)
+    public async Task<Churrasco?> BuscarPorId(Guid id)
     {
         return await _repository.BuscarPorId(id);
     }
 
-    public async Task<IList<ChurrascoModel>> Listar()
+    public async Task<IList<Churrasco>> Listar()
     {
         return await _repository.Listar();
     }

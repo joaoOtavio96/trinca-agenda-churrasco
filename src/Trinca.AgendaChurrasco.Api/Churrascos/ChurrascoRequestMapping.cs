@@ -1,15 +1,15 @@
 using AutoMapper;
-using Trinca.AgendaChurrasco.Domain.Churrasco;
+using Trinca.AgendaChurrasco.Domain.Churrascos;
 
-namespace Trinca.AgendaChurrasco.Api.Churrasco;
+namespace Trinca.AgendaChurrasco.Api.Churrascos;
 
-public class ViewModelToModelMapping : Profile
+public class ChurrascoRequestMapping : Profile
 {
-    public ViewModelToModelMapping()
+    public ChurrascoRequestMapping()
     {
-        CreateMap<ChurrascoRequestViewModel, ChurrascoModel>()
+        CreateMap<ChurrascoRequest, Churrasco>()
             .ConstructUsing(x => 
-                new ChurrascoModel(
+                new Churrasco(
                     x.Titulo,
                     x.Descricao,
                     x.Observacao,

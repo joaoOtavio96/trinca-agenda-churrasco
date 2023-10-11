@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Trinca.AgendaChurrasco.Domain.Participante;
+using Trinca.AgendaChurrasco.Domain.Participantes;
 
 namespace Trinca.AgendaChurrasco.Data.EntityConfiguration;
 
-public class ParticipanteConfiguration : IEntityTypeConfiguration<ParticipanteModel>
+public class ParticipanteConfiguration : IEntityTypeConfiguration<Participante>
 {
-    public void Configure(EntityTypeBuilder<ParticipanteModel> builder)
+    public void Configure(EntityTypeBuilder<Participante> builder)
     {
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Nome)
@@ -16,7 +16,7 @@ public class ParticipanteConfiguration : IEntityTypeConfiguration<ParticipanteMo
             .IsRequired()
             .HasColumnType("decimal(5,2)");
 
-        builder.HasOne(x => x.ChurrascoModel)
+        builder.HasOne(x => x.Churrasco)
             .WithMany(x => x.Participantes)
             .HasForeignKey(x => x.ChurrascoId);
     }

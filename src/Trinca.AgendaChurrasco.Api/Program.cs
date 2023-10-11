@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Trinca.AgendaChurrasco.Data;
 using Trinca.AgendaChurrasco.Data.Repository;
-using Trinca.AgendaChurrasco.Domain.Churrasco;
-using Trinca.AgendaChurrasco.Domain.Participante;
+using Trinca.AgendaChurrasco.Domain.Churrascos;
+using Trinca.AgendaChurrasco.Domain.Participantes;
 
 var builder = WebApplication.CreateBuilder(args);
 

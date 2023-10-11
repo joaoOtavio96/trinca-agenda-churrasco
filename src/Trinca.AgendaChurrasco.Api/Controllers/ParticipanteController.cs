@@ -1,7 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Trinca.AgendaChurrasco.Api.Participante;
-using Trinca.AgendaChurrasco.Domain.Participante;
+using Trinca.AgendaChurrasco.Api.Participantes;
+using Trinca.AgendaChurrasco.Domain.Participantes;
 
 namespace Trinca.AgendaChurrasco.Api.Controllers;
 
@@ -19,11 +19,11 @@ public class ParticipanteController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(ParticipanteRequestViewModel participanteViewModel)
+    public async Task<IActionResult> Post(ParticipanteRequest participanteRequest)
     {
         try
         {
-            var participante = _mapper.Map<ParticipanteRequestViewModel, ParticipanteModel>(participanteViewModel);
+            var participante = _mapper.Map<ParticipanteRequest, Participante>(participanteRequest);
 
             var resultado = await _service.Adicionar(participante);
 

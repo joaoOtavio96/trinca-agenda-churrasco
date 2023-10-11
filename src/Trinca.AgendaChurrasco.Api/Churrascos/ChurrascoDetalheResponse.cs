@@ -1,8 +1,8 @@
-using Trinca.AgendaChurrasco.Api.Participante;
+using Trinca.AgendaChurrasco.Api.Participantes;
 
-namespace Trinca.AgendaChurrasco.Api.Churrasco;
+namespace Trinca.AgendaChurrasco.Api.Churrascos;
 
-public class ChurrascoDetalheResponseViewModel
+public class ChurrascoDetalheResponse
 {
     public string Titulo { get; set; }
     public string Descricao { get; set; }
@@ -13,5 +13,5 @@ public class ChurrascoDetalheResponseViewModel
     public decimal ValorTotal { get; set; }
     public int ParticipantesTotal { get; set; }
     
-    public IList<ParticipanteResponseViewModel> Participantes { get; set; }
+    public IList<ParticipanteResponse> Participantes { get; set; }
 }

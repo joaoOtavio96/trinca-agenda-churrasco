@@ -1,6 +1,6 @@
 using Trinca.AgendaChurrasco.Domain.Shared.Validations;
 
-namespace Trinca.AgendaChurrasco.Domain.Participante;
+namespace Trinca.AgendaChurrasco.Domain.Participantes;
 
 public class ParticipanteService : IParticipanteService
 {
@@ -11,15 +11,15 @@ public class ParticipanteService : IParticipanteService
         _repository = repository;
     }
     
-    public async Task<Resultado> Adicionar(ParticipanteModel participanteModel)
+    public async Task<Resultado> Adicionar(Participante participante)
     {
         var validator = new ParticipanteValidator();
-        var validationResult = validator.Validate(participanteModel);
+        var validationResult = validator.Validate(participante);
 
         if (!validationResult.IsValid)
             return new Resultado(validationResult.Errors.Select(x => x.ErrorMessage));
 
-        await _repository.Adicionar(participanteModel);
+        await _repository.Adicionar(participante);
 
         return new Resultado();
     }

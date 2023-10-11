@@ -1,8 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Trinca.AgendaChurrasco.Api.Churrasco;
-using Trinca.AgendaChurrasco.Api.Participante;
-using Trinca.AgendaChurrasco.Domain.Churrasco;
+using Trinca.AgendaChurrasco.Api.Churrascos;
+using Trinca.AgendaChurrasco.Domain.Churrascos;
 
 namespace Trinca.AgendaChurrasco.Api.Controllers;
 
@@ -26,7 +25,7 @@ public class ChurrascoController : ControllerBase
         {
             var churrascos = await _service.Listar();
             
-            var churrascoListarResponse = _mapper.Map<IEnumerable<ChurrascoResponseViewModel>>(churrascos);
+            var churrascoListarResponse = _mapper.Map<IEnumerable<ChurrascoResponse>>(churrascos);
             
             return Ok(churrascoListarResponse);
         }
@@ -47,7 +46,7 @@ public class ChurrascoController : ControllerBase
             if (churrasco is null)
                 return NotFound();
 
-            var churrascoDetalhe = _mapper.Map<ChurrascoDetalheResponseViewModel>(churrasco);
+            var churrascoDetalhe = _mapper.Map<ChurrascoDetalheResponse>(churrasco);
     
             return Ok(churrascoDetalhe);
         }
@@ -59,11 +58,11 @@ public class ChurrascoController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(ChurrascoRequestViewModel churrascoViewModel)
+    public async Task<IActionResult> Post(ChurrascoRequest churrascoRequest)
     {
         try
         {
-            var churrasco = _mapper.Map<ChurrascoModel>(churrascoViewModel);
+            var churrasco = _mapper.Map<Churrasco>(churrascoRequest);
             
             var resultado = await _service.Adicionar(churrasco);
 
@@ -80,13 +79,13 @@ public class ChurrascoController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Put(ChurrascoRequestViewModel churrascoViewModel, Guid id)
+    public async Task<IActionResult> Put(ChurrascoRequest churrascoRequest, Guid id)
     {
         try
         {
             var churrasco = _mapper
-                .Map<ChurrascoModel>(
-                    churrascoViewModel, 
+                .Map<Churrasco>(
+                    churrascoRequest, 
                     opts => opts.Items["Id"] = id
                     );
 
