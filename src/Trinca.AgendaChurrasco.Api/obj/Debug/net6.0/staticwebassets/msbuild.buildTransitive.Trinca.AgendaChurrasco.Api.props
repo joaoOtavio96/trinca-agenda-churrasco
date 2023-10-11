@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../buildMultiTargeting/Trinca.AgendaChurrasco.Api.props" />
-</Project>
