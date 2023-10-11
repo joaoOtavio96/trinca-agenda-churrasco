@@ -20,6 +20,8 @@ builder.Services.AddScoped<IChurrascoRepository, ChurrascoRepository>();
 builder.Services.AddScoped<IParticipanteService, ParticipanteService>();
 builder.Services.AddScoped<IParticipanteRepository, ParticipanteRepository>();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

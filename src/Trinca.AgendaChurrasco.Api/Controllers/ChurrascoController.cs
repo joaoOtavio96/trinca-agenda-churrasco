@@ -25,16 +25,8 @@ public class ChurrascoController : ControllerBase
         try
         {
             var churrascos = await _service.Listar();
-
-            var churrascoListarResponse = churrascos
-                .Select(x => new ChurrascoResponseViewModel()
-                { 
-                    Id = x.Id,
-                    Titulo = x.Titulo,
-                    Data = x.Data,
-                    ValorTotal = x.CalcularValorTotal(),
-                    ParticipantesTotal = x.ParticipantesTotal()
-                });
+            
+            var churrascoListarResponse = _mapper.Map<IEnumerable<ChurrascoResponseViewModel>>(churrascos);
             
             return Ok(churrascoListarResponse);
         }
@@ -55,27 +47,7 @@ public class ChurrascoController : ControllerBase
             if (churrasco is null)
                 return NotFound();
 
-            var participantes = churrasco.Participantes
-                .Select(x => new ParticipanteResponseViewModel()
-                {
-                    Id = x.Id,
-                    Nome = x.Nome,
-                    Valor = x.Valor,
-                    Pago = x.Pago
-                });
-
-            var churrascoDetalhe = new ChurrascoDetalheResponseViewModel
-            {
-                Titulo = churrasco.Titulo,
-                Descricao = churrasco.Descricao,
-                Observacao = churrasco.Observacao,
-                Data = churrasco.Data,
-                ValorSugeridoComBebida = churrasco.ValorSugeridoComBebida,
-                ValorSugeridoSemBebida = churrasco.ValorSugeridoSemBebida,
-                ValorTotal = churrasco.CalcularValorTotal(),
-                ParticipantesTotal = churrasco.ParticipantesTotal(),
-                Participantes = participantes.ToList()
-            };
+            var churrascoDetalhe = _mapper.Map<ChurrascoDetalheResponseViewModel>(churrasco);
     
             return Ok(churrascoDetalhe);
         }
@@ -91,7 +63,7 @@ public class ChurrascoController : ControllerBase
     {
         try
         {
-            var churrasco = _mapper.Map<ChurrascoRequestViewModel, ChurrascoModel>(churrascoViewModel);
+            var churrasco = _mapper.Map<ChurrascoModel>(churrascoViewModel);
             
             var resultado = await _service.Adicionar(churrasco);
 
@@ -113,7 +85,7 @@ public class ChurrascoController : ControllerBase
         try
         {
             var churrasco = _mapper
-                .Map<ChurrascoRequestViewModel, ChurrascoModel>(
+                .Map<ChurrascoModel>(
                     churrascoViewModel, 
                     opts => opts.Items["Id"] = id
                     );

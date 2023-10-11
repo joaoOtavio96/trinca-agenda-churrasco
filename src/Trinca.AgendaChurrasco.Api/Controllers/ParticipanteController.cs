@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Trinca.AgendaChurrasco.Api.Participante;
 using Trinca.AgendaChurrasco.Domain.Participante;
@@ -9,10 +10,12 @@ namespace Trinca.AgendaChurrasco.Api.Controllers;
 public class ParticipanteController : ControllerBase
 {
     private readonly IParticipanteService _service;
+    private readonly IMapper _mapper;
 
-    public ParticipanteController(IParticipanteService service)
+    public ParticipanteController(IParticipanteService service, IMapper mapper)
     {
         _service = service;
+        _mapper = mapper;
     }
 
     [HttpPost]
@@ -20,11 +23,7 @@ public class ParticipanteController : ControllerBase
     {
         try
         {
-            var participante = new ParticipanteModel(
-                participanteViewModel.Nome, 
-                participanteViewModel.Valor, 
-                participanteViewModel.Pago,
-                participanteViewModel.ChurrascoId);
+            var participante = _mapper.Map<ParticipanteRequestViewModel, ParticipanteModel>(participanteViewModel);
 
             var resultado = await _service.Adicionar(participante);
 
@@ -46,7 +45,10 @@ public class ParticipanteController : ControllerBase
     {
         try
         {
-            await _service.Deletar(id);
+            var resultado = await _service.Deletar(id);
+            
+            if (resultado.PossuiErros)
+                return BadRequest(resultado);
 
             return Ok();
         }
