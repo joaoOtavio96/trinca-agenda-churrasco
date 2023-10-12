@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinca.AgendaChurrasco.Doma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinca.AgendaChurrasco.Data", "src\Trinca.AgendaChurrasco.Data\Trinca.AgendaChurrasco.Data.csproj", "{8769CA7C-CC9A-4BFA-9812-CE4DDAAA431D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinca.AgendaChurrasco.Testes.Unidade", "src\Trinca.AgendaChurrasco.Testes.Unidade\Trinca.AgendaChurrasco.Testes.Unidade.csproj", "{5B87BF43-3681-4BB6-A208-12EEAE341011}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{8769CA7C-CC9A-4BFA-9812-CE4DDAAA431D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8769CA7C-CC9A-4BFA-9812-CE4DDAAA431D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8769CA7C-CC9A-4BFA-9812-CE4DDAAA431D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B87BF43-3681-4BB6-A208-12EEAE341011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B87BF43-3681-4BB6-A208-12EEAE341011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B87BF43-3681-4BB6-A208-12EEAE341011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B87BF43-3681-4BB6-A208-12EEAE341011}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

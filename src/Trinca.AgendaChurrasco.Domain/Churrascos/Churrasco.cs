@@ -35,6 +35,8 @@ public class Churrasco : Entity
         Descricao = churrasco.Descricao;
         Observacao = churrasco.Observacao;
         Data = churrasco.Data;
+        ValorSugeridoSemBebida = churrasco.ValorSugeridoSemBebida;
+        ValorSugeridoComBebida = churrasco.ValorSugeridoComBebida;
     }
 
     public decimal CalcularValorTotal()

@@ -35,7 +35,7 @@ public class ChurrascoService : IChurrascoService
         var churrascoAtualizar = await _repository.BuscarPorId(churrasco.Id);
 
         if(churrascoAtualizar is null)
-            return new Resultado("Churrasco não encontrado");
+            return new Resultado(ChurrascoErrorMessages.ChurrascoNaoEncontrado);
         
         churrascoAtualizar.Atualizar(churrasco);
         
@@ -49,7 +49,7 @@ public class ChurrascoService : IChurrascoService
         var churrascoDeletar = await _repository.BuscarPorId(id);
 
         if (churrascoDeletar is null)
-            return new Resultado("Churrasco não encontrado");
+            return new Resultado(ChurrascoErrorMessages.ChurrascoNaoEncontrado);
         
         await _repository.Deletar(churrascoDeletar);
 
