@@ -1,0 +1,29 @@
+﻿services:
+  trinca.agendachurrasco.api:
+    image: trinca.agendachurrasco.api
+    hostname: agendaChurrascoApi
+    environment:
+      - "ConnectionStrings__SqlServer=Server=db,1433;Database=AgendaChurrasco;User ID=sa;Password=AgendaChurrasco@#23#"
+    ports:
+      - "80:80"
+    depends_on: 
+      - db
+    networks: 
+       - api-network
+    build:
+      context: .
+      dockerfile: src/Trinca.AgendaChurrasco.Api/Dockerfile
+      
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    networks:
+      - api-network
+    environment:
+      SA_PASSWORD: "AgendaChurrasco@#23#"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+
+networks:
+  api-network:
+    driver: bridge

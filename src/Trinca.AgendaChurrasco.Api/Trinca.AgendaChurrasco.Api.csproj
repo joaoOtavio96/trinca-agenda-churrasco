@@ -4,6 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
@@ -24,5 +25,10 @@
     <ItemGroup>
       <ProjectReference Include="..\Trinca.AgendaChurrasco.Data\Trinca.AgendaChurrasco.Data.csproj" />
       <ProjectReference Include="..\Trinca.AgendaChurrasco.Domain\Trinca.AgendaChurrasco.Domain.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 </Project>
