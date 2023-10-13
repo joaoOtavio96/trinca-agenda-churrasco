@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Trinca.AgendaChurrasco.Data;
 
@@ -11,9 +12,10 @@ using Trinca.AgendaChurrasco.Data;
 namespace Trinca.AgendaChurrasco.Data.Migrations
 {
     [DbContext(typeof(AgendaChurrascoDbContext))]
-    partial class AgendaChurrascoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231013160609_Add_Coluna_SoftDelete")]
+    partial class Add_Coluna_SoftDelete
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Trinca.AgendaChurrasco.Data;
+using Trinca.AgendaChurrasco.Data.Interceptors;
 using Trinca.AgendaChurrasco.Data.Repository;
 using Trinca.AgendaChurrasco.Domain.Churrascos;
 using Trinca.AgendaChurrasco.Domain.Participantes;
@@ -13,7 +14,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AgendaChurrascoDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"))
+        .AddInterceptors(new SoftDeleteInterceptor())
+        .AddInterceptors(new DataCriacaoInterceptor())
+    );
 
 builder.Services.AddScoped<IChurrascoService, ChurrascoService>();
 builder.Services.AddScoped<IChurrascoRepository, ChurrascoRepository>();

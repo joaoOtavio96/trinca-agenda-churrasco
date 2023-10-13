@@ -3,7 +3,7 @@ using Trinca.AgendaChurrasco.Domain.Shared.Entities;
 
 namespace Trinca.AgendaChurrasco.Domain.Churrascos;
 
-public class Churrasco : Entity
+public class Churrasco : Entity, ISoftDeletable
 {
     public Churrasco(
         string titulo, 
@@ -26,6 +26,7 @@ public class Churrasco : Entity
     public DateTime Data { get; private set; }
     public decimal ValorSugeridoSemBebida { get; private set; }
     public decimal ValorSugeridoComBebida { get; private set; }
+    public bool IsDeleted { get; set; }
     
     public virtual ICollection<Participante> Participantes { get; set; }
 
@@ -54,5 +55,4 @@ public class Churrasco : Entity
         
         return Participantes.Count;
     }
-    
 }

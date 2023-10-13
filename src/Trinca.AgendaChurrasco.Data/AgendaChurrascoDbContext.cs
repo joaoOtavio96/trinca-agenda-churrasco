@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Trinca.AgendaChurrasco.Data.EntityConfiguration;
 using Trinca.AgendaChurrasco.Domain.Churrascos;
 using Trinca.AgendaChurrasco.Domain.Participantes;
+using Trinca.AgendaChurrasco.Domain.Shared.Entities;
 
 namespace Trinca.AgendaChurrasco.Data;
 

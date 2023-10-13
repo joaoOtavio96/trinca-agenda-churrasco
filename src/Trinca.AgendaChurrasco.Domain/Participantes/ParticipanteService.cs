@@ -25,7 +25,7 @@ public class ParticipanteService : IParticipanteService
         var churrasco = await _churrascoService.BuscarPorId(participante.ChurrascoId);
         
         if(churrasco is null)
-            return new Resultado("Churrasco não encontrado");
+            return new Resultado(ChurrascoErrorMessages.ChurrascoNaoEncontrado);
         
         await _repository.Adicionar(participante);
 
@@ -37,7 +37,7 @@ public class ParticipanteService : IParticipanteService
         var participanteDeletar = await _repository.BuscarPorId(id);
 
         if (participanteDeletar is null)
-            return new Resultado("Participante não encontrado");
+            return new Resultado(ParticipanteErrorMessages.ParticipanteNaoEncontrado);
         
         await _repository.Deletar(participanteDeletar);
 
@@ -49,7 +49,7 @@ public class ParticipanteService : IParticipanteService
         var participante = await _repository.BuscarPorId(id);
         
         if(participante is null)
-            return new Resultado("Participante não encontrado");
+            return new Resultado(ParticipanteErrorMessages.ParticipanteNaoEncontrado);
         
         participante.AtualizarPago();
         await _repository.Atualizar(participante);
@@ -62,7 +62,7 @@ public class ParticipanteService : IParticipanteService
         var participante = await _repository.BuscarPorId(id);
         
         if(participante is null)
-            return new Resultado("Participante não encontrado");
+            return new Resultado(ParticipanteErrorMessages.ParticipanteNaoEncontrado);
         
         participante.AtualizarNaoPago();
         await _repository.Atualizar(participante);

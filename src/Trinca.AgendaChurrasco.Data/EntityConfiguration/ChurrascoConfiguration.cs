@@ -23,5 +23,7 @@ public class ChurrascoConfiguration : IEntityTypeConfiguration<Churrasco>
         builder.Property(x => x.ValorSugeridoComBebida)
             .IsRequired()
             .HasColumnType("decimal(5,2)");
+
+        builder.HasQueryFilter(x => x.IsDeleted == false);
     }
 }
