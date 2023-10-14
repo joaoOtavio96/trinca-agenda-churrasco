@@ -21,6 +21,7 @@ public class ChurrascoRepository : IChurrascoRepository
     public async Task Atualizar(Churrasco churrasco)
     {
         _context.Update(churrasco);
+        _context.Entry(churrasco).State = EntityState.Modified;
         await _context.SaveChangesAsync();
     }
 
