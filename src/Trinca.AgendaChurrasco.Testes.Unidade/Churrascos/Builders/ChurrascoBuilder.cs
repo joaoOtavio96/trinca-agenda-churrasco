@@ -10,7 +10,7 @@ public class ChurrascoBuilder : AutoFaker<Churrasco>
         RuleFor(x => x.Titulo, f => f.Random.String2(50));
         RuleFor(x => x.Descricao, f => f.Random.String2(500));
         RuleFor(x => x.Observacao, f => f.Random.String2(500));
-        RuleFor(x => x.Data, f => f.Date.Recent());
+        RuleFor(x => x.Data, f => f.Date.Future());
         RuleFor(x => x.ValorSugeridoSemBebida, f => f.Random.Decimal());
         RuleFor(x => x.ValorSugeridoComBebida, f => f.Random.Decimal());
         RuleSet("default", f =>

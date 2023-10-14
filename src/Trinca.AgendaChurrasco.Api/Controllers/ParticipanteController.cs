@@ -11,11 +11,13 @@ public class ParticipanteController : ControllerBase
 {
     private readonly IParticipanteService _service;
     private readonly IMapper _mapper;
+    private readonly ILogger<ParticipanteController> _logger;
 
-    public ParticipanteController(IParticipanteService service, IMapper mapper)
+    public ParticipanteController(IParticipanteService service, IMapper mapper, ILogger<ParticipanteController> logger)
     {
         _service = service;
         _mapper = mapper;
+        _logger = logger;
     }
 
     [HttpPost]
@@ -35,8 +37,9 @@ public class ParticipanteController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _logger.LogError(e, e.Message);
+
+            return StatusCode(500);
         }
     }
 
@@ -54,8 +57,9 @@ public class ParticipanteController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _logger.LogError(e, e.Message);
+
+            return StatusCode(500);
         }
     }
 
@@ -73,8 +77,9 @@ public class ParticipanteController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _logger.LogError(e, e.Message);
+
+            return StatusCode(500);
         }
     }
     
@@ -92,8 +97,9 @@ public class ParticipanteController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _logger.LogError(e, e.Message);
+
+            return StatusCode(500);
         }
     }
 }

@@ -18,12 +18,6 @@ namespace Trinca.AgendaChurrasco.Testes.Integracao.Churrascos.Specs;
 [TestFixture]
 public class ChurrascoApiTestes : TesteBase
 {
-    [TearDown]
-    public async Task TearDown()
-    {
-        await RespawnDb.ResetAsync(DbContext.Database.GetConnectionString());
-    }
-    
     [Test]
     public async Task Post_DeveInserirNoBanco()
     {
@@ -36,7 +30,6 @@ public class ChurrascoApiTestes : TesteBase
             ValorSugeridoComBebida = 30,
             ValorSugeridoSemBebida = 20
         };
-        
         var churrascoJson = JsonConvert.SerializeObject(churrasco);
 
         var conteudo = new StringContent(churrascoJson, Encoding.Default, "application/json");
@@ -157,7 +150,7 @@ public class ChurrascoApiTestes : TesteBase
 
         await HttpClient.DeleteAsync($"/churrasco/{churrasco.Id}");
 
-        var existeChurrasco = await DbContext.Churrascos.AnyAsync();
+        var existeChurrasco = await DbContext.Churrascos.AnyAsync(x => x.Id == churrasco.Id);
 
         existeChurrasco.Should().BeFalse();
     }
@@ -209,7 +202,9 @@ public class ChurrascoApiTestes : TesteBase
         var churrasco = new ChurrascoBuilder()
             .RuleFor(x => x.IsDeleted, f => false)
             .Generate();
-        churrasco.Participantes = new ParticipanteBuilder().Generate(4);
+        churrasco.Participantes = new ParticipanteBuilder()
+            .RuleFor(x => x.Valor, f => 20)
+            .Generate(4);
         await DbContext.AddAsync(churrasco);
         await DbContext.SaveChangesAsync();
         var churrascoEsperado = new ChurrascoDetalheResponse()

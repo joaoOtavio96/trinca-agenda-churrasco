@@ -11,11 +11,13 @@ public class ChurrascoController : ControllerBase
 {
     private readonly IChurrascoService _service;
     private readonly IMapper _mapper;
+    private readonly ILogger<ChurrascoController> _logger;
 
-    public ChurrascoController(IChurrascoService service, IMapper mapper)
+    public ChurrascoController(IChurrascoService service, IMapper mapper, ILogger<ChurrascoController> logger)
     {
         _service = service;
         _mapper = mapper;
+        _logger = logger;
     }
 
     [HttpGet]
@@ -31,8 +33,9 @@ public class ChurrascoController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _logger.LogError(e, e.Message);
+
+            return StatusCode(500);
         }
     }
     
@@ -52,8 +55,9 @@ public class ChurrascoController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _logger.LogError(e, e.Message);
+
+            return StatusCode(500);
         }
     }
 
@@ -73,8 +77,9 @@ public class ChurrascoController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _logger.LogError(e, e.Message);
+
+            return StatusCode(500);
         }
     }
 
@@ -98,8 +103,9 @@ public class ChurrascoController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _logger.LogError(e, e.Message);
+
+            return StatusCode(500);
         }
     }
 
@@ -117,8 +123,9 @@ public class ChurrascoController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            _logger.LogError(e, e.Message);
+
+            return StatusCode(500);
         }
     }
 }

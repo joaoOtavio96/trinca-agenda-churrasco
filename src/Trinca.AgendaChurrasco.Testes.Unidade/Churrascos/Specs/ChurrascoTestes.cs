@@ -12,8 +12,12 @@ public class ChurrascoTestes
     [Test]
     public void Atualizar_DeveAtualizarValoresChurrasco()
     {
-        var churrasco = new ChurrascoBuilder().Generate();
-        var churrascoAtualizado = new ChurrascoBuilder().Generate();
+        var churrasco = new ChurrascoBuilder()
+            .RuleFor(x => x.IsDeleted, f => false)
+            .Generate();
+        var churrascoAtualizado = new ChurrascoBuilder()
+            .RuleFor(x => x.IsDeleted, f => false)
+            .Generate();
         
         churrasco.Atualizar(churrascoAtualizado);
 
